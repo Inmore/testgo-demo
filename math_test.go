@@ -1,6 +1,8 @@
 package math
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestAdd(t *testing.T) {
 	got := Add(4, 11)
@@ -26,4 +28,23 @@ func TestAdd_Table(t *testing.T) {
 		})
 	}
 
+}
+
+func TestLookup(t *testing.T) {
+	cases := []struct {
+		name     string
+		a, b, ok int
+	}{
+		{"first", 1, 1, 2},
+		{"second", 2, 5, 7},
+		{"third", 3, 5, 8},
+	}
+	for _, c := range cases {
+		t.Run(c.name, func(t *testing.T) {
+			t.Parallel()
+			if got := Add(c.a, c.b); got != c.ok {
+				t.Fatalf("%s: got %d, want %d", c.name, got, c.ok)
+			}
+		})
+	}
 }
