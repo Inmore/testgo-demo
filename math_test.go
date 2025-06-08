@@ -48,3 +48,37 @@ func TestLookup(t *testing.T) {
 		})
 	}
 }
+
+func TestSolveQuadraticEquation(t *testing.T) {
+	cases := []struct {
+		name, m         string
+		a, b, c, x1, x2 float64
+	}{
+		{
+			name: "has solutions",
+			a:    2,
+			b:    1,
+			c:    -6,
+			x1:   1.5,
+			x2:   -2,
+			m:    "",
+		},
+		{
+			name: "hasn't solutions",
+			a:    2,
+			b:    -3,
+			c:    7,
+			x1:   0,
+			x2:   0,
+			m:    "решений нет",
+		},
+	}
+	for _, c := range cases {
+		t.Run(c.name, func(t *testing.T) {
+			got_x1, got_x2, got_m := SolveQuadraticEquation(c.a, c.b, c.c)
+			if got_x1 != c.x1 || got_x2 != c.x2 || got_m != c.m {
+				t.Fatalf("got x1=%f, x2=%f, m=%s, but want x1=%f, x2=%f, m=%s", got_x1, got_x2, got_m, c.x1, c.x2, c.m)
+			}
+		})
+	}
+}
