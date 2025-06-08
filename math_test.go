@@ -89,7 +89,7 @@ func TestGreatestCommonDivisor(t *testing.T) {
 		x, y, res uint
 	}{
 		{
-			name: "relular case",
+			name: "regular case",
 			x:    35,
 			y:    21,
 			res:  7,
