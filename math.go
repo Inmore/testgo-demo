@@ -1,6 +1,7 @@
 package math
 
 import (
+	"fmt"
 	"math"
 	"time"
 )
@@ -57,4 +58,29 @@ func PointInsideFigure(x, y float64) bool {
 	} else {
 		return false
 	}
+}
+
+func MulTable() [10][10]int {
+	var table [10][10]int
+	for i := 1; i < 10; i++ {
+		table[i][0] = i
+		table[0][i] = i
+	}
+	for i := 1; i < 10; i++ {
+		for j := 1; j < 10; j++ {
+			table[i][j] = i * j
+		}
+	}
+	for i := 0; i < 10; i++ {
+		for j := 0; j < 10; j++ {
+			if i == 0 && j == 0 {
+				fmt.Printf("    ")
+			} else {
+				fmt.Printf("%4d", table[i][j])
+			}
+		}
+		fmt.Println()
+	}
+
+	return table
 }

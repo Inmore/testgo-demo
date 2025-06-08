@@ -186,3 +186,11 @@ func TestPointInsideFigure(t *testing.T) {
 		})
 	}
 }
+
+func TestMulTable(t *testing.T) {
+	got := MulTable()
+	want := 64
+	if got[8][8] != 64 {
+		t.Fatalf("got %d, want %d", got[8][8], want)
+	}
+}
