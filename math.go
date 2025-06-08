@@ -38,9 +38,8 @@ func GreatestCommonDivisor(x, y uint) uint {
 func RocketLunch(v float64) string {
 	res := ""
 	if v < 0 {
-		return "Скорость не может быть меньше 0"
-	}
-	if v < 7.8 {
+		res = "Скорость не может быть меньше 0"
+	} else if v < 7.8 {
 		res = "Ракета упадет на Землю"
 	} else if v < 11.2 {
 		res = "Ракета станет спутником Земли"
