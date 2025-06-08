@@ -82,3 +82,31 @@ func TestSolveQuadraticEquation(t *testing.T) {
 		})
 	}
 }
+
+func TestGreatestCommonDivisor(t *testing.T) {
+	cases := []struct {
+		name      string
+		x, y, res uint
+	}{
+		{
+			name: "relular case",
+			x:    35,
+			y:    21,
+			res:  7,
+		},
+		{
+			name: "0 case",
+			x:    0,
+			y:    0,
+			res:  0,
+		},
+	}
+	for _, c := range cases {
+		t.Run(c.name, func(t *testing.T) {
+			got := GreatestCommonDivisor(c.x, c.y)
+			if got != c.res {
+				t.Fatalf("got %d, but want %d", got, c.res)
+			}
+		})
+	}
+}
