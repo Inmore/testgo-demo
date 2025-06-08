@@ -50,3 +50,11 @@ func RocketLunch(v float64) string {
 	}
 	return res
 }
+
+func PointInsideFigure(x, y float64) bool {
+	if y >= 0 && (math.Abs(x)+math.Abs(y)) <= 1 {
+		return true
+	} else {
+		return false
+	}
+}

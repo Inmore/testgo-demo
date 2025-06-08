@@ -151,3 +151,38 @@ func TestRocketLunch(t *testing.T) {
 		})
 	}
 }
+
+func TestPointInsideFigure(t *testing.T) {
+	cases := []struct {
+		name string
+		x, y float64
+		res  bool
+	}{
+		{
+			name: "first case",
+			x:    -0.4,
+			y:    0.95,
+			res:  false,
+		},
+		{
+			name: "second case",
+			x:    -0.25,
+			y:    0.5,
+			res:  true,
+		},
+		{
+			name: "third case",
+			x:    -0.5,
+			y:    0.5,
+			res:  true,
+		},
+	}
+	for _, c := range cases {
+		t.Run(c.name, func(t *testing.T) {
+			got := PointInsideFigure(c.x, c.y)
+			if got != c.res {
+				t.Fatalf("got %v, want %v", got, c.res)
+			}
+		})
+	}
+}
