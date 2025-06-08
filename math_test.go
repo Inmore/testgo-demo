@@ -110,3 +110,44 @@ func TestGreatestCommonDivisor(t *testing.T) {
 		})
 	}
 }
+
+func TestRocketLunch(t *testing.T) {
+	cases := []struct {
+		name, res string
+		v         float64
+	}{
+		{
+			name: "Скорость меньше 0",
+			v:    -1,
+			res:  "Скорость не может быть меньше 0",
+		},
+		{
+			name: "Падение на Землю",
+			v:    1,
+			res:  "Ракета упадет на Землю",
+		},
+		{
+			name: "Спутник Земли",
+			v:    10,
+			res:  "Ракета станет спутником Земли",
+		},
+		{
+			name: "Спутник Солнца",
+			v:    14,
+			res:  "Ракета станет спутником Солнца",
+		},
+		{
+			name: "Выход за пределы Солнечной системы",
+			v:    20,
+			res:  "Ракета покинет Солнечную систему",
+		},
+	}
+	for _, c := range cases {
+		t.Run(c.name, func(t *testing.T) {
+			got := RocketLunch(c.v)
+			if got != c.res {
+				t.Fatalf("got %s, but expected %s", got, c.res)
+			}
+		})
+	}
+}
